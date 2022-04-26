@@ -4,9 +4,10 @@ var pelota = {}
 pelota.top = 70
 pelota.left = 920
 pelota.dir = [-1,-3]
-pelota.vel = 5
-setInterval(moverpelota, 1000 / 24)
-
+pelota.vel = 3
+//setInterval(moverpelota, 1000 / 24)
+setInterval(moverpelota, 1000/24)
+ 
 function moverpelota() {
 
   let div2 = document.getElementById("div2")
@@ -21,8 +22,9 @@ if (pelota.top < 0)
 pelota.dir[1] = pelota.dir[1]*(-1)
 
 if (pelota.top > 730)
-  if (posicion < pelota.left)
-    pelota.dir[1] = pelota.dir[1]*(-1)
+  if (posicion + 100 > pelota.left)
+    if (posicion < pelota.left)
+      pelota.dir[1] = pelota.dir[1]*(-1)
 
 if (pelota.left > 1836)
 pelota.dir[0] = pelota.dir[0]*(-1)
