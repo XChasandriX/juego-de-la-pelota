@@ -1,0 +1,22 @@
+#div1{
+   background-color: black;
+   width: 1836px;
+   height: 800px;
+}
+#div2 {
+  background-color: white;
+  width: 100px;
+  height: 20px;
+  position:absolute;
+  left: 880px;
+  top: 780px;
+}
+#div3{
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  position:absolute;
+  left: 920px;
+  top: 750px;
+  border-radius: 15px;
+}
