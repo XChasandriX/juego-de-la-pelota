@@ -15,10 +15,13 @@ plataforma.vel = 2
 setInterval(moverpelota, 1000 / 24)
 window.onload = iniciar
 function iniciar(){
-  for (let i= 0; i <= 18; i++){
-    new Ladrillo(70 + i* 90,90)
-  }
 
+  for (let j= 0; j <= 5; j++){
+    for (let i= 0; i <= 18; i++){
+      new Ladrillo(70 + i* 90,90 + (j-1)*50)
+
+    }
+  }
 }
 
 class Ladrillo {
@@ -53,11 +56,22 @@ function moverpelota() {
   if (pelota.left < 0)
     pelota.dir[0] = pelota.dir[0] * (-1)
 
+    verColision()
+
 
   let div = document.getElementById("div3")
   div.style.left = pelota.left + "px"
   div.style.top = pelota.top + "px"
 }
+//colicion de los cubos en lo que rebota la pelota.
+function verColision(){
+   let ladrillos = document.querySelectorAll(".ladrillo")
+   for (let l of ladrillos){
+     if (pelota.top > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top)+40)))
+      l.style.display = "none"
+   }
+}
+
 window.onkeydown = mover
 
 //mueve la plataforma con als flechas.
