@@ -1,7 +1,7 @@
 console.log("moviendo")
 //tamaño,velocidad,dirección de la pelota y la plataforma.
 var pelota = {}
-pelota.top = 70
+pelota.top = 750
 pelota.left = 920
 pelota.dir = [-1, -3]
 pelota.vel = 3
@@ -63,12 +63,25 @@ function moverpelota() {
   div.style.left = pelota.left + "px"
   div.style.top = pelota.top + "px"
 }
-//colicion de los cubos en lo que rebota la pelota.
+//colicion de los ladrillos en lo que rebota la pelota y desparecen.
 function verColision(){
    let ladrillos = document.querySelectorAll(".ladrillo")
    for (let l of ladrillos){
-     if (pelota.top > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top)+40)))
-      l.style.display = "none"
+     if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top)+40)))
+      if (pelota.left + 15 > parseInt(l.style.left) && (pelota.left < (parseInt(l.style.left)+80))){
+       l.style.display = "none"
+       l.remove()
+       if (pelota.dir[0] < 0)
+       if (pelota.left <
+
+       else
+
+
+       pelota.dir[1] = pelota.dir[1] * (-1)
+
+
+}
+
    }
 }
 
