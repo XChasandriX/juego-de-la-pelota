@@ -14,11 +14,12 @@ plataforma.vel = 2
 //setInterval(moverpelota, 1000 / 24)
 setInterval(moverpelota, 1000 / 24)
 window.onload = iniciar
-function iniciar(){
 
-  for (let j= 0; j <= 5; j++){
-    for (let i= 0; i <= 18; i++){
-      new Ladrillo(70 + i* 90,90 + (j-1)*50)
+function iniciar() {
+
+  for (let j = 0; j <= 5; j++) {
+    for (let i = 0; i <= 18; i++) {
+      new Ladrillo(70 + i * 90, 90 + (j - 1) * 50)
 
     }
   }
@@ -26,11 +27,11 @@ function iniciar(){
 
 class Ladrillo {
   constructor(x, y) {
-let div = document.createElement('div')
-div.classList.add('ladrillo')
-div.style.left = x + "px"
-div.style.top = y + "px"
-document.getElementById("div1").appendChild(div)
+    let div = document.createElement('div')
+    div.classList.add('ladrillo')
+    div.style.left = x + "px"
+    div.style.top = y + "px"
+    document.getElementById("div1").appendChild(div)
   }
 }
 
@@ -42,7 +43,7 @@ function moverpelota() {
 
   pelota.top += pelota.vel * pelota.dir[1]
 
-  if (pelota.top < 0)
+  if (pelota.top < 25)
     pelota.dir[1] = pelota.dir[1] * (-1)
 
   if (pelota.top > 750)
@@ -50,13 +51,13 @@ function moverpelota() {
       if (plataforma.left - 40 < pelota.left)
         pelota.dir[1] = pelota.dir[1] * (-1)
 
-  if (pelota.left > 1836)
+  if (pelota.left > 1820)
     pelota.dir[0] = pelota.dir[0] * (-1)
 
-  if (pelota.left < 0)
+  if (pelota.left < 10)
     pelota.dir[0] = pelota.dir[0] * (-1)
 
-    verColision()
+  verColision()
 
 
   let div = document.getElementById("div3")
@@ -64,26 +65,39 @@ function moverpelota() {
   div.style.top = pelota.top + "px"
 }
 //colicion de los ladrillos en lo que rebota la pelota y desparecen.
-function verColision(){
-   let ladrillos = document.querySelectorAll(".ladrillo")
-   for (let l of ladrillos){
-     if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top)+40)))
-      if (pelota.left + 15 > parseInt(l.style.left) && (pelota.left < (parseInt(l.style.left)+80))){
-       l.style.display = "none"
-       l.remove()
-       if (pelota.dir[0] < 0)
-       if (pelota.left <
+function verColision() {
+  let ladrillos = document.querySelectorAll(".ladrillo")
+  pelota.norte = [pelota.left + 15, pelota.top]
+  pelota.sur = [pelota.left + 15, pelota.top + 30]
+  pelota.este = [pelota.left + 30, pelota.top + 15]
+  pelota.oeste = [pelota.left, pelota.top + 15]
+  for (let l of ladrillos) {
+    if (pelota.vel[1] < 0)
+      if (pelota.norte[0] > l.left)
+        if (pelota.norte[0] < l.left + 80)
+          if (pelota.norte[1] > l.top + 40)
+            if (pelota.norte[1] < l.top) {
+              l.remove()
+              pelota.dir[1] = pelota.dir[1] * (-1)
+            }
+    //  if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top) + 40)))
+    //  if (pelota.left + 15 > parseInt(l.style.left) && (pelota.left < (parseInt(l.style.left) + 80))) {
+    //  l.style.display = "none"
+    //  l.remove()
 
-       else
+    //  if (pelota.dir[0] < 0)
 
 
-       pelota.dir[1] = pelota.dir[1] * (-1)
+    //else
 
+
+
+
+
+  }
 
 }
 
-   }
-}
 
 window.onkeydown = mover
 
