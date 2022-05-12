@@ -10,9 +10,12 @@ plataforma.top = 780
 plataforma.left = 880
 plataforma.dir = 0
 plataforma.vel = 2
+//contador de puntos de la partida.
+var puntos = 0
+
 
 //setInterval(moverpelota, 1000 / 24)
-setInterval(moverpelota, 1000 / 24)
+setInterval(moverpelota, 900 / 24)
 window.onload = iniciar
 
 function iniciar() {
@@ -72,15 +75,41 @@ function verColision() {
   pelota.este = [pelota.left + 30, pelota.top + 15]
   pelota.oeste = [pelota.left, pelota.top + 15]
   for (let l of ladrillos) {
-    if (pelota.vel[1] < 0)
-      if (pelota.norte[0] > l.left)
-        if (pelota.norte[0] < l.left + 80)
-          if (pelota.norte[1] > l.top + 40)
-            if (pelota.norte[1] < l.top) {
+
+    if (pelota.dir[1] < 0)
+      if (pelota.norte[0] > parseInt(l.style.left))
+        if (pelota.norte[0] < parseInt(l.style.left) + 80)
+          if (pelota.norte[1] < parseInt(l.style.top) + 40)
+            if (pelota.norte[1] > parseInt(l.style.top)) {
               l.remove()
               pelota.dir[1] = pelota.dir[1] * (-1)
             }
-    //  if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top) + 40)))
+    if (pelota.dir[0] < 0)
+      if (pelota.oeste[0] > parseInt(l.style.left))
+        if (pelota.oeste[0] < parseInt(l.style.left) + 80)
+          if (pelota.oeste[1] < parseInt(l.style.top) + 40)
+            if (pelota.oeste[1] > parseInt(l.style.top)) {
+              l.remove()
+              pelota.dir[0] = pelota.dir[0] * (-1)
+            }
+    if (pelota.dir[0] > 0)
+      if (pelota.este[0] > parseInt(l.style.left))
+        if (pelota.este[0] < parseInt(l.style.left) + 80)
+          if (pelota.este[1] < parseInt(l.style.top) + 40)
+            if (pelota.este[1] > parseInt(l.style.top)) {
+              l.remove()
+              pelota.dir[0] = pelota.dir[0] * (-1)
+            }
+    if (pelota.dir[0] < 1)
+      if (pelota.sur[0] > parseInt(l.style.left))
+        if (pelota.sur[0] < parseInt(l.style.left) + 80)
+          if (pelota.sur[1] < parseInt(l.style.top) + 40)
+            if (pelota.sur[1] > parseInt(l.style.top)) {
+              l.remove()
+              pelota.dir[0] = pelota.dir[0] * (-1)
+            }
+
+    //if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top) + 40)))
     //  if (pelota.left + 15 > parseInt(l.style.left) && (pelota.left < (parseInt(l.style.left) + 80))) {
     //  l.style.display = "none"
     //  l.remove()
