@@ -15,7 +15,7 @@ var puntos = 0
 
 
 //setInterval(moverpelota, 1000 / 24)
-setInterval(moverpelota, 900 / 24)
+var timer = setInterval(moverpelota, 900 / 24)
 window.onload = iniciar
 
 function iniciar() {
@@ -49,10 +49,22 @@ function moverpelota() {
   if (pelota.top < 25)
     pelota.dir[1] = pelota.dir[1] * (-1)
 
+    if(pelota.top > 800)
+    clearTimeout(timer)
+
+    console.log("fin")
+
+
   if (pelota.top > 750)
     if (plataforma.left + 100 > pelota.left)
-      if (plataforma.left - 40 < pelota.left)
+      if (plataforma.left - 40 < pelota.left){
+        let desicion = plataforma.left + 50 - (pelota.left + 15)
+        pelota.dir[0] = - desicion/10;
+
+      //console.log(desicion)
+
         pelota.dir[1] = pelota.dir[1] * (-1)
+      }
 
   if (pelota.left > 1820)
     pelota.dir[0] = pelota.dir[0] * (-1)
@@ -66,6 +78,10 @@ function moverpelota() {
   let div = document.getElementById("div3")
   div.style.left = pelota.left + "px"
   div.style.top = pelota.top + "px"
+
+
+
+
 }
 //colicion de los ladrillos en lo que rebota la pelota y desparecen.
 function verColision() {
@@ -108,6 +124,7 @@ function verColision() {
               l.remove()
               pelota.dir[0] = pelota.dir[0] * (-1)
             }
+
 
     //if (pelota.top + 15 > parseInt(l.style.top) && (pelota.top < (parseInt(l.style.top) + 40)))
     //  if (pelota.left + 15 > parseInt(l.style.left) && (pelota.left < (parseInt(l.style.left) + 80))) {
