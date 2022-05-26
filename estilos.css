@@ -2,7 +2,7 @@
   /*color del fondo.*/
    background-color: black;
    width: 1836px;
-   height: 800px;
+   height: 850px;
 }
 #div2 {
   /*dibujo de la plataforma.*/
@@ -28,4 +28,23 @@
 position:absolute;
 height:40px;
 background-color: green;
+}
+#div4{
+  /*puntiacion del jugador.*/
+  background-color:white;
+  width: 130px;
+  height: 20px;
+  position:absolute;
+  left: 9px;
+  top: 850px;
+}
+#div5{
+/*GAME OVER: final de la partida*/
+background-color: transparent;
+width: 40%;
+height: 30%;
+position:absolute;
+margin: auto;
+
+
 }

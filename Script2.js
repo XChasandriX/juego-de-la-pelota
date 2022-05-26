@@ -98,7 +98,12 @@ function verColision() {
           if (pelota.norte[1] < parseInt(l.style.top) + 40)
             if (pelota.norte[1] > parseInt(l.style.top)) {
               l.remove()
+              puntos+= 10
+              let div4 = document.getElementById("div4")
+              div4.textContent = "Puntos: " + puntos
+              console.log(puntos)
               pelota.dir[1] = pelota.dir[1] * (-1)
+              continue
             }
     if (pelota.dir[0] < 0)
       if (pelota.oeste[0] > parseInt(l.style.left))
@@ -106,7 +111,12 @@ function verColision() {
           if (pelota.oeste[1] < parseInt(l.style.top) + 40)
             if (pelota.oeste[1] > parseInt(l.style.top)) {
               l.remove()
+              puntos += 10
+              let div4 = document.getElementById("div4")
+              div4.textContent = "Puntos: " + puntos
+              console.log(puntos)
               pelota.dir[0] = pelota.dir[0] * (-1)
+              continue
             }
     if (pelota.dir[0] > 0)
       if (pelota.este[0] > parseInt(l.style.left))
@@ -114,7 +124,12 @@ function verColision() {
           if (pelota.este[1] < parseInt(l.style.top) + 40)
             if (pelota.este[1] > parseInt(l.style.top)) {
               l.remove()
+              puntos+= 10
+              let div4 = document.getElementById("div4")
+              div4.textContent = "Puntos: " + puntos
+              console.log(puntos)
               pelota.dir[0] = pelota.dir[0] * (-1)
+              continue
             }
     if (pelota.dir[0] < 1)
       if (pelota.sur[0] > parseInt(l.style.left))
@@ -122,7 +137,12 @@ function verColision() {
           if (pelota.sur[1] < parseInt(l.style.top) + 40)
             if (pelota.sur[1] > parseInt(l.style.top)) {
               l.remove()
+              puntos+= 10
+              let div4 = document.getElementById("div4")
+              div4.textContent = "Puntos: " + puntos
+              console.log(puntos)
               pelota.dir[0] = pelota.dir[0] * (-1)
+              continue
             }
 
 
