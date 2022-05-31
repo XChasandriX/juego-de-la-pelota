@@ -49,10 +49,14 @@ function moverpelota() {
   if (pelota.top < 25)
     pelota.dir[1] = pelota.dir[1] * (-1)
 
-    if(pelota.top > 800)
-    clearTimeout(timer)
+    if(pelota.top > 830){
+      clearTimeout(timer)
 
-    console.log("fin")
+      console.log("fin")
+      let div5 = document.getElementById("div5")
+      div5.style.display = "block"
+    }
+
 
 
   if (pelota.top > 750)

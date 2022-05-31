@@ -40,9 +40,11 @@ background-color: green;
 }
 #div5{
 /*GAME OVER: final de la partida*/
-background-color: transparent;
-width: 40%;
-height: 30%;
+color:red;
+font-size: 4rem;
+left:650px;
+top:400px;
+display:none;
 position:absolute;
 margin: auto;
 
